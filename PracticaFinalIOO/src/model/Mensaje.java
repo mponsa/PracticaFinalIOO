@@ -12,7 +12,7 @@ public class Mensaje extends App {
 	};
 	
 	public String getContent(){
-		return this.getContent();
+		return this.content;
 	};
 	
 	public Usuario getEmisor(){

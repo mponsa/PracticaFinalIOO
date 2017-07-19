@@ -6,8 +6,7 @@ import java.util.*;
 public class App extends Observado {
 	protected List <SalaDeChat> salas = new ArrayList<SalaDeChat>();
 	protected List <Usuario> usuarios = new ArrayList<Usuario>();
- 	
-	
+
 	
 	public boolean agregarSala(String nombre){
 		salas.add(new SalaDeChat(nombre));
@@ -20,5 +19,9 @@ public class App extends Observado {
 	
 	public List<SalaDeChat> getSalas(){
 		return this.salas;
+	}
+
+	public List<Usuario> getUsuarios(){
+		return this.usuarios;
 	}
 }

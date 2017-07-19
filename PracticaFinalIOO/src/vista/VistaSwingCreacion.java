@@ -22,6 +22,7 @@ public abstract class VistaSwingCreacion extends JFrame{
 	public void configurarVentana(){
 		this.setSize(300,300);
 		this.setLayout(null);
+		this.setResizable(false);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}

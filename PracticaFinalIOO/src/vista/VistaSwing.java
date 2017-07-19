@@ -27,6 +27,7 @@ public class VistaSwing extends JFrame implements IObservador{
 	public void configurarVentana(){
 		this.setTitle("Aplicacion de Mensajeria");
 		this.setSize(360,300);
+		this.setResizable(true);
 		this.setLayout(null);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
