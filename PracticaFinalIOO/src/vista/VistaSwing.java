@@ -42,13 +42,22 @@ public class VistaSwing extends JFrame implements IObservador{
 		salas = new JComboBox<String>();
 		label1 = new JLabel();
 		
-		//ActionListeners
+		// 1. ActionListeners
 		btnAbrirSala.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				SalaDeChat sala = null;
 				
+				for(SalaDeChat s : app.getSalas()){
+					if (s.getNombre() == salas.getSelectedItem()){
+						sala = s;
+					}
+				}
+				
+				if(sala != null)
+				new VistaSwingSala(app, sala);
 			}
 			
 		});
@@ -73,9 +82,19 @@ public class VistaSwing extends JFrame implements IObservador{
 			
 		});
 		
-		//Texto inicial LABEL
+		//2. Texto inicial LABEL
 		label1.setText("No actualizado");
-
+		
+		//3. Seteo de salas
+		salas = new JComboBox();
+		if(app.getSalas().isEmpty()){
+			salas.addItem("No hay salas creadas aún");
+		}else{
+		for(SalaDeChat i : app.getSalas()){
+			salas.addItem(i.getNombre());
+		}
+		}
+		
 		
 		//Agregado al JFRAME.
 		this.add(btnAbrirSala);
@@ -101,16 +120,7 @@ public class VistaSwing extends JFrame implements IObservador{
 		crear.add(addSalas);
 		crear.add(addUsuarios);
 		
-		//Seteo de salas
-		salas = new JComboBox();
-		if(app.getSalas().isEmpty()){
-			salas.addItem("No hay salas creadas aún");
-		}else{
-		for(SalaDeChat i : app.getSalas()){
-			salas.addItem(i.getNombre());
-		}
-		}
-		
+
 
 
 	}
@@ -118,10 +128,11 @@ public class VistaSwing extends JFrame implements IObservador{
 	@Override
 	public void Actualizar() {
 		// TODO Auto-generated method stub
-		
+		//Actualizar label
 		label1.setText("Actualizado");
 		
 		//Get Salas Nuevas
+		salas.removeAllItems();
 		if(app.getSalas().isEmpty()){
 			salas.addItem("No hay salas creadas aún");
 		}else{
