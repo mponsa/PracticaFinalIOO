@@ -6,15 +6,16 @@ import java.awt.event.ActionListener;
 import model.App;
 
 public class VistaSwingCreacionUser extends VistaSwingCreacion {
-
+	VistaSwingCreacionUser vista;
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
 
 	public VistaSwingCreacionUser(App app){
 		super(app);
+		vista = this;
 		configurarVentana();
 		inicializarComponentes();
 	}
@@ -33,7 +34,7 @@ public class VistaSwingCreacionUser extends VistaSwingCreacion {
 			public void actionPerformed(ActionEvent e) {
 				app.crearUsuario(texto.getText());
 				app.actualizarObservadores();
-				System.exit(0);
+				vista.dispose();
 			}
 			
 		});
